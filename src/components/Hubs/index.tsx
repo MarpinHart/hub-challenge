@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { HubItem } from "./HubItem";
 import { Filter, HubRecovery } from "./types";
 import { Filters } from "src/components/Filter";
+import { StytedMain } from "./style";
 
 const initialFilter: Filter = {
   stage: "ALL",
@@ -59,17 +60,17 @@ const Hubs: React.FC = () => {
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         open={isError}
         message={error.message}
-        key={"error-snackbar"}
+        key="error-snackbar"
       />
     );
 
   return (
-    <main>
+    <StytedMain>
       <Filters setFilter={setFilter} filter={filter} />
       {data?.map((hub: HubRecovery) => (
         <HubItem key={hub.uuid} hub={hub} />
       ))}
-    </main>
+    </StytedMain>
   );
 };
 

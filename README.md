@@ -21,3 +21,5 @@ Once the package manager has installed all the dependencies, to start a developm
 ```bash
 npm run dev
 ```
+
+Follow the instructions on the terminal to find the correct localhost.

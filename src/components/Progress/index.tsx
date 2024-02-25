@@ -22,22 +22,28 @@ const ProgressBar: React.FC<HubItemProps> = ({ hub }) => {
     [hub]
   );
 
+  const formattedTotalUnassignedQuantity: string = useMemo(
+    () =>
+      hub.unassignedQuantityTotal.toLocaleString("en-US", {
+        maximumFractionDigits: 0,
+      }),
+    [hub]
+  );
+
   return (
     <ProgressContainer>
       <ProgressLabelWrapper>
         <ProgressLabel>
           <span>Recovered:</span>
           <strong>
-            {hub.formattedTotalRecoveredQuantity + hub.recoveredQuantityUnit}
+            {`${hub.formattedTotalRecoveredQuantity} ${hub.recoveredQuantityUnit}`}
           </strong>
         </ProgressLabel>
         <strong style={{ fontSize: "1.5rem" }}>{progressPercentage} %</strong>
         <ProgressLabel>
           <span>Remaining:</span>
           <strong>
-            {hub.unassignedQuantityTotal.toLocaleString("en-US", {
-              maximumFractionDigits: 0,
-            }) + hub.recoveredQuantityUnit}
+            {`${formattedTotalUnassignedQuantity} ${hub.recoveredQuantityUnit}`}
           </strong>
         </ProgressLabel>
       </ProgressLabelWrapper>
